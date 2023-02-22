@@ -61,7 +61,47 @@ Though `first_name` is quite limiting and we should add other features time-perm
 
 [System Design](https://github.com/grantgasser/moonhub/blob/master/Acronym%20Expansion.drawio.pdf)
 
+### Components
+
+#### Initial Data Collection
+Here we enter and store the most common job titles. For example we can reason from experience and common sense that "software engineer" is more common than "swe", "software eng", etc. Thus, we initially enter the most common jobs we care about (either manually or by grabbing from the web) like so:
+
+```
+{
+  "software engineer": ["swe", "software eng", ...],
+  ...
+}
+```
+
+Note in the code there is a slight variation of this where we _also store the embedding_ so we don't have to query the API every time we access the key.
+
+#### Data Storage
+Because our dataset will be small, we are flexible in how and where we store this data. Per this design, a key-value store would be ideal such as Cassandra or we could simply store the mapping in a pickle file.
+
+#### Query
+A query comes in string format like so: "nlp scientist"
+
+#### Variation Function 
+This is the core functionality of the system which does the following:
+1. Performs a lookup from **Data Storage**
+2. Checks the cosine similarity of the `title` embedding to existing `most_common_title` embeddings. Time complexity: O(num_jobs)
+3. After finding the most similar, it returns the variations! 
+
+Case: if `title` is not in our list of variations, we add it for further use. Thus the knowledge base grows organically with each query.
+
+**Time and Space complexity note:** We expect the dataset to be relatively small given that there are only so many unique jobs that we will care about and only so many variations of that job title. That said, space and time complexity for this functionality can be thought of as O(num_jobs * num_variations_per_job).
+
+#### Variations Output
+The set of variations like so:
+```
+get_variations("mle") => 
+{'machine learning eng',
+  'machine learning engineer',
+  'ml eng',
+  'ml engineer'
+ }
+  ```
+
 ### Limitations / Tradeoffs / Assumptions
-- 
-- 
+- Does not handle completely new job titles well (i.e. if we ask for "truck driver")
 
