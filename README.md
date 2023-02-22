@@ -3,6 +3,8 @@
 ## Problem 1 - Diversity Search
 [Code](https://github.com/grantgasser/moonhub/blob/master/Moonhub_Diversity_Search.ipynb)
 
+NOTE: Apologies for the long outputs, formatting is lost when pushing a notebook to Git. Feel free to scroll right past!
+
 ### Goal
 Predict Woman / Not Woman using LinkedIn profile data.
 
@@ -20,7 +22,7 @@ Model 1: Use structured features
 
 *Limited/unimpressive results w/ this approach
 
-Model 2: Use natural language features (OpenAI embeddings)
+Model 2: Use natural language features (**OpenAI embeddings**) and a simple linear model (**Logistic Regression**)
 - `first_name`
 - `volunteering`
 - `organizations`
