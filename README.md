@@ -10,7 +10,7 @@ Predict Woman / Not Woman using LinkedIn profile data.
 ### Manual labelling
 Sample dataset and labelled ~500 examples via `label_api()`.
 
-**Limitation:** Roughly ~39% of records from the original dataset did not have profile pictures. Our sample _only_ includes profiles with pictures and the sample may be slightly biased. For example, there may be a correlation between examples that _don't have profile pictures_ and predicting Woman / Not Woman.
+**Limitation:** Roughly ~39% of records from the original dataset did not have profile pictures. Our sample _only_ includes profiles with pictures and thus the sample may be slightly biased. For example, there may be a correlation between examples that _don't have profile pictures_ and predicting Woman / Not Woman.
 
 ### Modeling
 Model 1: Use structured features
@@ -28,9 +28,9 @@ Model 2: Use natural language features (OpenAI embeddings)
 
 *Promising results with this approach
 
-Ensemble: average outpus of 1 & 2 for predictions.
+Ensemble: average outputs of 1 & 2 for predictions.
 
-Final: Ended up just sticking with Model 2 (natural language features, specifically: `first_name`).
+**Final:** Ended up just sticking with Model 2 (natural language features, specifically: `first_name`).
 
 ### Results
 - Accuracy: 91.75%
@@ -59,4 +59,6 @@ Though `first_name` is quite limiting and we should add other features time-perm
 ## Problem 2 - Acronym Expansion
 [Code](https://github.com/grantgasser/moonhub/blob/master/Moonhub_Acronym_Expansion.ipynb)
 
+[System Design]()
 
+Fun stuff
