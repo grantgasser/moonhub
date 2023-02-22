@@ -1,4 +1,4 @@
-# Moonhub Assigments
+# Moonhub Assignment
 
 ## Problem 1 - Diversity Search
 [Code](https://github.com/grantgasser/moonhub/blob/master/Moonhub_Diversity_Search.ipynb)
@@ -59,6 +59,9 @@ Though `first_name` is quite limiting and we should add other features time-perm
 ## Problem 2 - Acronym Expansion
 [Code](https://github.com/grantgasser/moonhub/blob/master/Moonhub_Acronym_Expansion.ipynb)
 
-[System Design]()
+[System Design](https://github.com/grantgasser/moonhub/blob/master/Acronym%20Expansion.drawio.pdf)
 
-Fun stuff
+### Limitations / Tradeoffs / Assumptions
+- 
+- 
+
