@@ -118,5 +118,5 @@ get_variations("mle") =>
   ```
 
 ### Limitations / Tradeoffs / Assumptions
-- Does not handle completely new job titles well (i.e. if we ask for "truck driver")
-
+- Does not handle completely new job titles that are unrelated to existing ones well (i.e. if we ask for "truck driver")
+- Likely a good idea to abstract the mapping into a class with methods (OOP)
