@@ -8,7 +8,9 @@ Predict Woman / Not Woman using LinkedIn profile data.
 
 ### Approach
 ### Manual labelling
-Labelled ~400 examples via `label_api()`
+Sample dataset and labelled ~500 examples via `label_api()`.
+
+**Limitation:** Roughly ~39% of records from the original dataset did not have profile pictures. Our sample _only_ includes profiles with pictures and the sample may be slightly biased. For example, there may be a correlation between examples that _don't have profile pictures_ and predicting Woman / Not Woman.
 
 ### Modeling
 Model 1: Use structured features
@@ -16,15 +18,19 @@ Model 1: Use structured features
 - `len_skills`
 - etc.
 
-Model 2: Use natural language features
+*Limited/unimpressive results w/ this approach
+
+Model 2: Use natural language features (OpenAI embeddings)
 - `first_name`
 - `volunteering`
 - `organizations`
 - etc.
 
+*Promising results with this approach
+
 Ensemble: average outpus of 1 & 2 for predictions.
 
-Final: Ended up just sticking with Model 2 (natural language features).
+Final: Ended up just sticking with Model 2 (natural language features, specifically: `first_name`).
 
 ### Results
 - Accuracy: 91.75%
@@ -43,6 +49,10 @@ Final: Ended up just sticking with Model 2 (natural language features).
 - Add new natural language features: `volunteering`, `organizations`, etc.
 - Given enough examples, train a Transformer
 - Ideal but unlikely: get ground truth labels, possibly by self-identification
+
+
+### Comments
+Though `first_name` is quite limiting and we should add other features time-permitting, I think the breadth of OpenAI's training data allows us to get pretty far simply with first names. The [referenced document](https://help.seekout.com/help/360056161191-How-SeekOut-Diversity-Classifiers-Work) boasts precision & recall > .9 by using a bank of the 1 million most common names. Here we have solid results by simply using OpenAI embeddings. 
 
 ---------------------------------------------------------------------------
 
