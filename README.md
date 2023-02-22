@@ -68,12 +68,25 @@ Here we enter and store the most common job titles. For example we can reason fr
 
 ```
 {
+  most_common_title: [variation1, variation2, ...],
+  ...
+}
+
+For example,
+```
+{
   "software engineer": ["swe", "software eng", ...],
   ...
 }
 ```
 
 Note in the code there is a slight variation of this where we _also store the embedding_ so we don't have to query the API every time we access the key.
+```
+{
+  "software engineer": [[0.1, -0.2 , ...], ["swe", "software eng", ...]],
+  ...
+}
+```
 
 #### Data Storage
 Because our dataset will be small, we are flexible in how and where we store this data. Per this design, a key-value store would be ideal such as Cassandra or we could simply store the mapping in a pickle file.
@@ -95,6 +108,7 @@ Case: if `title` is not in our list of variations, we add it for further use. Th
 The set of variations like so:
 ```
 get_variations("mle") => 
+
 {'machine learning eng',
   'machine learning engineer',
   'ml eng',
