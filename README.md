@@ -71,6 +71,7 @@ Here we enter and store the most common job titles. For example we can reason fr
   most_common_title: [variation1, variation2, ...],
   ...
 }
+```
 
 For example,
 ```
